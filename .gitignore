@@ -1,0 +1,5 @@
+build/
+dagger2javaapp.iml
+dagger2javaapp.ipr
+dagger2javaapp.iws
+.gradle
