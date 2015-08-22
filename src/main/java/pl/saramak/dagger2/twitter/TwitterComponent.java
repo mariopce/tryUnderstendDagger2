@@ -9,6 +9,7 @@ import javax.inject.Singleton;
  * Created by mario on 22.08.15.
  */
 @Component(modules = TwitterModule.class)
+@Singleton
 public interface TwitterComponent {
 
     public void inject(Application app);

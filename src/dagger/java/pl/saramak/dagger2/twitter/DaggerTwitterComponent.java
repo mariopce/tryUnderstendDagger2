@@ -1,6 +1,8 @@
 package pl.saramak.dagger2.twitter;
 
 import dagger.MembersInjector;
+import dagger.internal.ScopedProvider;
+import java.io.PrintStream;
 import javax.annotation.Generated;
 import javax.inject.Provider;
 import pl.saramak.dagger2.Application;
@@ -8,6 +10,7 @@ import pl.saramak.dagger2.Application_MembersInjector;
 
 @Generated("dagger.internal.codegen.ComponentProcessor")
 public final class DaggerTwitterComponent implements TwitterComponent {
+  private Provider<PrintStream> providePrintStreamProvider;
   private Provider<Twitter> provideTwitterProvider;
   private MembersInjector<Application> applicationMembersInjector;
 
@@ -20,12 +23,9 @@ public final class DaggerTwitterComponent implements TwitterComponent {
     return new Builder();
   }
 
-  public static TwitterComponent create() {  
-    return builder().build();
-  }
-
   private void initialize(final Builder builder) {  
-    this.provideTwitterProvider = TwitterModule_ProvideTwitterFactory.create(builder.twitterModule);
+    this.providePrintStreamProvider = ScopedProvider.create(TwitterModule_ProvidePrintStreamFactory.create(builder.twitterModule));
+    this.provideTwitterProvider = ScopedProvider.create(TwitterModule_ProvideTwitterFactory.create(builder.twitterModule, providePrintStreamProvider));
     this.applicationMembersInjector = Application_MembersInjector.create(provideTwitterProvider);
   }
 
@@ -47,7 +47,7 @@ public final class DaggerTwitterComponent implements TwitterComponent {
   
     public TwitterComponent build() {  
       if (twitterModule == null) {
-        this.twitterModule = new TwitterModule();
+        throw new IllegalStateException("twitterModule must be set");
       }
       return new DaggerTwitterComponent(this);
     }
