@@ -1,8 +1,6 @@
 package pl.saramak.dagger2;
 
-import pl.saramak.dagger2.Application;
-import pl.saramak.dagger2.twitter.DaggerTwitterComponent;
-import pl.saramak.dagger2.twitter.TwitterComponent;
+import pl.saramak.dagger2.app.Application;
 import pl.saramak.dagger2.twitter.TwitterModule;
 
 /*

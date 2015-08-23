@@ -2,11 +2,12 @@ package pl.saramak.dagger2;
 
 import dagger.Component;
 
-import pl.saramak.dagger2.Application;
+
 import pl.saramak.dagger2.Main;
+import pl.saramak.dagger2.app.Application;
 import pl.saramak.dagger2.test.DaggerTestComponent;
 import pl.saramak.dagger2.test.TestModule;
-import pl.saramak.dagger2.twitter.TwitterComponent;
+
 import pl.saramak.dagger2.twitter.TwitterModule;
 
 

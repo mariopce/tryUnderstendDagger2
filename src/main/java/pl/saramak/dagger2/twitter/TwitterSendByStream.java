@@ -9,11 +9,13 @@ import java.io.PrintStream;
 /**
  * Created by mario on 22.08.15.
  */
+@Singleton
 public class TwitterSendByStream implements Twitter {
 
-    @Inject PrintStream stream;
+    private PrintStream stream;
 
 
+    @Inject
     public TwitterSendByStream(PrintStream stream) {
         this.stream = stream;
     }

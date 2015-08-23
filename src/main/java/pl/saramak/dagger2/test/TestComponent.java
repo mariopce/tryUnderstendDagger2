@@ -1,9 +1,8 @@
 package pl.saramak.dagger2.test;
 
 import dagger.Component;
-import pl.saramak.dagger2.Application;
-import pl.saramak.dagger2.LibraryTest;
-import pl.saramak.dagger2.twitter.TwitterModule;
+import pl.saramak.dagger2.app.Application;
+import pl.saramak.dagger2.time.TimerModule;
 
 import javax.inject.Singleton;
 
@@ -11,7 +10,8 @@ import javax.inject.Singleton;
  * Created by mario on 22.08.15.
  */
 @Singleton
-@Component(modules = TestModule.class)
+@Component(modules = {TestModule.class, TimerModule.class})
 public interface TestComponent{
     public void inject(Application test);
+
 }
