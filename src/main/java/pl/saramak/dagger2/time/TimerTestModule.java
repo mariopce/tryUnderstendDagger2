@@ -6,18 +6,17 @@ import pl.saramak.dagger2.app.AppScope;
 import pl.saramak.dagger2.app.AppScope2;
 
 import javax.inject.Named;
-import javax.inject.Scope;
-import javax.inject.Singleton;
 
 /**
  * Created by mario on 23.08.15.
  */
 @Module
-public class TimerModule {
+public class TimerTestModule {
 
 
-    @Provides
+
     @Named("Warsaw")
+    @Provides
     public Timer provideWTimer(){
         return new WarsawTimer();
     }
@@ -28,4 +27,5 @@ public class TimerModule {
     public Timer provideLTimer(){
         return new LondonTimer();
     }
+
 }

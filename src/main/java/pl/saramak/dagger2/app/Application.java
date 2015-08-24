@@ -15,6 +15,7 @@ import javax.inject.Named;
 public class Application {
 
     @Inject Twitter twitter;
+
     @Inject
     @London
     Timer timer;

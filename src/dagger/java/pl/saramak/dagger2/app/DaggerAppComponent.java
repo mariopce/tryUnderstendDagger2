@@ -32,7 +32,7 @@ public final class DaggerAppComponent implements AppComponent {
   private void initialize(final Builder builder) {  
     this.providePrintStreamProvider = ScopedProvider.create(TwitterModule_ProvidePrintStreamFactory.create(builder.twitterModule));
     this.provideTwitterProvider = ScopedProvider.create(TwitterModule_ProvideTwitterFactory.create(builder.twitterModule, providePrintStreamProvider));
-    this.provideLTimerProvider = ScopedProvider.create(TimerModule_ProvideLTimerFactory.create(builder.timerModule));
+    this.provideLTimerProvider = TimerModule_ProvideLTimerFactory.create(builder.timerModule);
     this.applicationMembersInjector = Application_MembersInjector.create(provideTwitterProvider, provideLTimerProvider);
   }
 

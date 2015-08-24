@@ -8,8 +8,8 @@ import javax.inject.Provider;
 import pl.saramak.dagger2.app.Application;
 import pl.saramak.dagger2.app.Application_MembersInjector;
 import pl.saramak.dagger2.time.Timer;
-import pl.saramak.dagger2.time.TimerModule;
-import pl.saramak.dagger2.time.TimerModule_ProvideLTimerFactory;
+import pl.saramak.dagger2.time.TimerTestModule;
+import pl.saramak.dagger2.time.TimerTestModule_ProvideLTimerFactory;
 import pl.saramak.dagger2.twitter.Twitter;
 
 @Generated("dagger.internal.codegen.ComponentProcessor")
@@ -35,7 +35,7 @@ public final class DaggerTestComponent implements TestComponent {
   private void initialize(final Builder builder) {  
     this.providePrintStreamProvider = ScopedProvider.create(TestModule_ProvidePrintStreamFactory.create(builder.testModule));
     this.provideTwitterProvider = ScopedProvider.create(TestModule_ProvideTwitterFactory.create(builder.testModule, providePrintStreamProvider));
-    this.provideLTimerProvider = ScopedProvider.create(TimerModule_ProvideLTimerFactory.create(builder.timerModule));
+    this.provideLTimerProvider = TimerTestModule_ProvideLTimerFactory.create(builder.timerTestModule);
     this.applicationMembersInjector = Application_MembersInjector.create(provideTwitterProvider, provideLTimerProvider);
   }
 
@@ -46,7 +46,7 @@ public final class DaggerTestComponent implements TestComponent {
 
   public static final class Builder {
     private TestModule testModule;
-    private TimerModule timerModule;
+    private TimerTestModule timerTestModule;
   
     private Builder() {  
     }
@@ -55,8 +55,8 @@ public final class DaggerTestComponent implements TestComponent {
       if (testModule == null) {
         this.testModule = new TestModule();
       }
-      if (timerModule == null) {
-        this.timerModule = new TimerModule();
+      if (timerTestModule == null) {
+        this.timerTestModule = new TimerTestModule();
       }
       return new DaggerTestComponent(this);
     }
@@ -69,11 +69,11 @@ public final class DaggerTestComponent implements TestComponent {
       return this;
     }
   
-    public Builder timerModule(TimerModule timerModule) {  
-      if (timerModule == null) {
-        throw new NullPointerException("timerModule");
+    public Builder timerTestModule(TimerTestModule timerTestModule) {  
+      if (timerTestModule == null) {
+        throw new NullPointerException("timerTestModule");
       }
-      this.timerModule = timerModule;
+      this.timerTestModule = timerTestModule;
       return this;
     }
   }

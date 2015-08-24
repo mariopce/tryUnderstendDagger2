@@ -2,6 +2,7 @@ package pl.saramak.dagger2.test;
 
 import dagger.Module;
 import dagger.Provides;
+import pl.saramak.dagger2.app.AppScope2;
 import pl.saramak.dagger2.stream.SysErrStream;
 import pl.saramak.dagger2.stream.SysOutStream;
 import pl.saramak.dagger2.twitter.Twitter;
@@ -17,13 +18,13 @@ import java.io.PrintStream;
 public class TestModule {
 
     @Provides
-    @Singleton
+    @AppScope2
     public PrintStream providePrintStream() {
             return new SysErrStream();
     }
 
     @Provides
-    @Singleton
+    @AppScope2
     public Twitter provideTwitter(PrintStream stream) {
         return new TwitterSendByStream(stream);
     }

@@ -2,6 +2,7 @@ package pl.saramak.dagger2.twitter;
 
 import dagger.Module;
 import dagger.Provides;
+import pl.saramak.dagger2.app.AppScope;
 import pl.saramak.dagger2.stream.SysErrStream;
 import pl.saramak.dagger2.stream.SysOutStream;
 
@@ -18,12 +19,11 @@ public class TwitterModule {
     private boolean debug;
 
     public TwitterModule(boolean debug) {
-
         this.debug = debug;
     }
 
     @Provides
-    @Singleton
+    @AppScope
     public PrintStream providePrintStream() {
         if (debug) {
             return new SysOutStream();
@@ -34,7 +34,7 @@ public class TwitterModule {
     }
 
     @Provides
-    @Singleton
+    @AppScope
     public Twitter provideTwitter(PrintStream stream) {
         return new TwitterSendByStream(stream);
     }

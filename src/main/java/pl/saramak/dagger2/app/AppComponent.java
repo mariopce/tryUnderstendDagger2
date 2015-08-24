@@ -11,7 +11,7 @@ import javax.inject.Singleton;
  * Created by mario on 22.08.15.
  */
 @Component(modules = {TwitterModule.class, TimerModule.class})
-@Singleton
+@AppScope
 public interface AppComponent {
 
     public void inject(Application app);

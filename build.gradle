@@ -29,7 +29,7 @@ configurations {
     compileDagger
 }
 
-mainClassName = "pl.saramak.dagger2.LibraryTest"
+mainClassName = "pl.saramak.dagger2.Main"
 
 
 compileJava {
